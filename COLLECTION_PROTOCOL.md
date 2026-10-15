@@ -1,6 +1,6 @@
 # Collection and annotation protocol
 
-This protocol is written for **real** recordings with the Spine-Grid Tee. The synthetic dataset follows the same structure so that the same scripts work unchanged once real data exists. Section 8 explains how the synthetic data was produced.
+This protocol is written for **real** recordings with the Spine-Grid Tee.
 
 ## 1. Hardware and mounting
 
@@ -82,18 +82,3 @@ WARN_DEG = 8, CRITICAL_DEG = 16, FLEX_WARN = 400, FLEX_CRITICAL = 900, BAD_POSTU
 
 Windows never cross sessions, and no participant appears in two splits. With real data, use leave-one-participant-out cross-validation as well, because 8 participants is small.
 
-## 8. How the synthetic data was produced (`generate_dataset.py`, seed 20261006)
-
-- **Participants:** 8, each with randomized height, sensor-mounting offsets (0–14°), habitual sitting and standing posture, gait and running cadence (1.72–1.98 / 2.55–2.95 Hz), flex baseline (2500–2950 counts), flex sensitivity (24–36 counts per degree of lumbar flexion), gyro bias (σ 1.5 °/s), accelerometer bias (σ 12 mg) and noise level.
-- **Sessions:** 16, two per day from 6 to 13 Oct 2026 (IST), each 4.7–5.2 minutes.
-- **Physics:**
-  - Accelerometer = gravity projected onto the simulated tilt of each board, (−sin φ, cos θ cos φ, sin θ cos φ), plus gait acceleration (walking ±0.2 g vertical; running impact peaks up to ~1.7 g, clipped at the ±2 g sensor limit), bias and noise (~4 mg).
-  - Gyroscope = rate of change of the simulated angles, plus yaw from walking turns and fidgets, bias and noise.
-  - Flex = baseline − sensitivity × lumbar flexion ∓ side-bend term, plus slow drift (σ 15 counts) and noise (σ 10 counts).
-  - Values are quantized to MPU6050 / ADC resolution.
-- **Imperfections:**
-  - 1–5-sample IMU dropouts (~0.06% chance per sample per IMU), plus an occasional 0.5–1.5 s connector dropout.
-  - Single-sample flex spikes to 0 or 4095.
-  - Accelerometer saturation while running.
-  - Slow OU-process drift in posture, sensor drift, breathing at 0.2–0.3 Hz.
-- **Labels:** come from the scripted episode magnitudes and timings using the rules in §5, never from the simulated sensor values or firmware.
