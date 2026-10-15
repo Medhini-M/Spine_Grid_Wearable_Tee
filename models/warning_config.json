@@ -1,0 +1,19 @@
+{
+  "tau_poor": 0.4,
+  "hold_s": 5.0,
+  "critical_sustain_s": 20.0,
+  "critical_severity": 1.9,
+  "severity_reference_deg": {
+    "upper_pitch_dev_deg__mean": 12.0,
+    "upper_roll_dev_deg__mean": 10.0,
+    "shoulder_asymmetry_dev_deg__mean": 10.0,
+    "shoulder_rounding_dev_deg__mean": 12.0
+  },
+  "applicable_activities": [
+    "sitting",
+    "standing",
+    "walking"
+  ],
+  "window_s": 2,
+  "hop_s": 1
+}
