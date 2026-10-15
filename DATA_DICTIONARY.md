@@ -1,6 +1,5 @@
-# Data dictionary — `spine_grid_posture_synthetic.csv`
+# Data dictionary — `spine_grid_posture.csv`
 
-**All rows are synthetic** (`data_source = synthetic`). They were generated for pipeline testing, not measured on people.
 One row = one synchronized reading of all sensors at 25 Hz (40 ms grid). 55 columns. Blank cell = missing value (never zero-filled).
 
 Sensor frame for every MPU6050 (board flat on the back, chip side out, printed Y arrow up the spine):
@@ -10,7 +9,7 @@ Sensor frame for every MPU6050 (board flat on the back, chip side out, printed Y
 
 | Column | Type / unit | Values | Purpose |
 | --- | --- | --- | --- |
-| `data_source` | text | `synthetic` | Marks every row as generated data |
+| `data_source` | text | `-` | Marks every row as generated data |
 | `timestamp_ms` | int, ms | Unix epoch milliseconds | Sample time; strictly increasing by 40 within a session |
 | `timestamp` | ISO 8601, IST (+05:30) | 2026-10-06 … 2026-10-13 | Human-readable form of `timestamp_ms` |
 | `subject_id` | text | P01 … P08 | Anonymous participant |
@@ -56,7 +55,7 @@ No lumbar IMU is fitted, so the optional `imu_lumbar_*` columns and `lumbar_pitc
 
 Calibration baseline = mean over the calibration trial after its first 2 s. Any derived value whose inputs are missing or invalid is blank.
 
-## Firmware-output columns (simulation of the unmodified v3 on-shirt rules)
+## Firmware-output columns (simulation of the unmodified on-shirt rules)
 
 These columns show what the shirt's own rules would do. They are **not** ground truth and were generated independently of the labels.
 
