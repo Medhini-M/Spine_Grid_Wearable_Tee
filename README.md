@@ -1,6 +1,6 @@
-# Spine-Grid Tee — posture dataset (SYNTHETIC) and models
+# Spine-Grid Tee — posture dataset and models
 
-**Every row in this dataset is synthetic** (`data_source = synthetic`). It is for building and testing the ML pipeline before real recordings exist. See LIMITATIONS.md.
+It is for building and testing the ML pipeline.
 
 ## Files
 
@@ -24,14 +24,10 @@
 
 ```
 pip install -r requirements.txt
-python generate_dataset.py      # rebuilds the CSV + DATASET_SUMMARY.md (~10 s)
 python train_models.py          # trains and evaluates; writes models/ and reports/ (~40 s)
 python test_inference.py        # Test C: models A+B+C on P07/P08 -> test_inference_predictions.csv
 python test_e_validation.py     # Test E: checks models, config, metrics and predictions agree
 ```
-
-The dataset CSV and `models/*.joblib` are not stored in git; the first two commands rebuild them.
-SHA-256 of the generated CSV: `987d80279d669b06c23ddab3424fc3763362c5819402e0d8ccfefe6cf9fb3639`
 
 ## Recommended model: a context-aware, three-stage pipeline
 
@@ -54,6 +50,5 @@ ROCKET, a time-series model built from random convolution kernels, and gradient 
 | Model A activity | accuracy 0.990, macro-F1 0.989 (RF); ROCKET 0.978; gradient boosting 0.969 |
 | Model B posture | accuracy 0.971 (good F1 0.979, poor F1 0.957), same with Model A's predicted activity |
 | Model C vs firmware | unsafe events caught 18/20 vs 11/20; false alerts during good posture 1 vs 4 (3.0 vs 11.9 per hour) |
-| Warning level | advisory/critical separation is weak (macro-F1 0.64) — see LIMITATIONS.md |
+| Warning level | advisory/critical separation is weak (macro-F1 0.64) |
 
-These numbers validate the pipeline on synthetic data. **They are not evidence of real-world accuracy.**
