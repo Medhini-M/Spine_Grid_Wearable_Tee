@@ -1,0 +1,36 @@
+{
+  "model_A_test": {
+    "accuracy": 0.9901873327386262,
+    "macro_f1": 0.9890439059386751,
+    "per_participant_accuracy": {
+      "P07": 0.9894179894179894,
+      "P08": 0.9909747292418772
+    }
+  },
+  "model_C_ml": {
+    "events": 20,
+    "detected": 18,
+    "missed": 2,
+    "recall": 0.9,
+    "alerts_on_short_poor_episodes": 5,
+    "alerts_on_borderline_episodes": 9,
+    "false_alerts_good_posture": 1,
+    "false_alerts_per_hour": 2.971473851030111,
+    "median_latency_s": 0.0,
+    "p90_latency_s": 0.14400000000000007
+  },
+  "model_C_firmware": {
+    "events": 20,
+    "detected": 11,
+    "missed": 9,
+    "recall": 0.55,
+    "alerts_on_short_poor_episodes": 2,
+    "alerts_on_borderline_episodes": 8,
+    "false_alerts_good_posture": 4,
+    "false_alerts_per_hour": 11.885895404120443,
+    "median_latency_s": 0.0,
+    "p90_latency_s": 0.0
+  },
+  "tau": 0.4,
+  "data_source": "synthetic"
+}
