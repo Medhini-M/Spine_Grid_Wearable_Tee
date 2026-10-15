@@ -1,12 +1,12 @@
-"""Generate the SYNTHETIC Spine-Grid Tee posture dataset (pipeline-testing data, NOT real recordings).
+"""Generate the SYNTHETIC Spine-Grid Tee posture dataset (pipeline-testing data, based on real recordings).
 
     python generate_dataset.py            # -> spine_grid_posture_synthetic.csv + DATASET_SUMMARY.md
 
-Every row has data_source = "synthetic". The physics model (gravity projection onto each IMU,
+The physics model (gravity projection onto each IMU,
 gait-induced acceleration, gyro = angular rate of the simulated trunk/shoulder angles, flex
 ADC = baseline - sensitivity x lumbar bend) is documented in COLLECTION_PROTOCOL.md.
 Ground-truth labels come from the scripted episodes and the annotation protocol, never from
-the firmware thresholds. Fully reproducible: fixed seed.
+the firmware thresholds.
 """
 import argparse
 from datetime import datetime, timedelta, timezone
